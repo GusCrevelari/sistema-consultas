@@ -45,3 +45,13 @@ function confirmarConsulta(consulta: Consulta): Consulta {
     status: "confirmada",
   };
 }
+
+function cancelarConsulta(consulta: Consulta): Consulta | null {
+  if (consulta.status === "realizada") {
+    return null;
+  }
+  return {
+    ...consulta,
+    status: "cancelada",
+  };
+}
