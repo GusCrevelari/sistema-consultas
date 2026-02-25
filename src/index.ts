@@ -21,3 +21,20 @@ const paciente1: Paciente = {
   cpf: "123.456.789-00",
   email: "carlos@email.com",
 };
+
+function criarConsulta(
+  id: number,
+  medico: Medico,
+  paciente: Paciente,
+  data: Date,
+  valor: number
+): Consulta {
+  return {
+    id,
+    medico,
+    paciente,
+    data,
+    valor,
+    status: "agendada",
+  };
+}
