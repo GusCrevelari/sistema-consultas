@@ -72,6 +72,34 @@ Status: ${consulta.status}
 `;
 }
 
+function listarConsultasPorStatus(
+  consultas: Consulta[],
+  status: StatusConsulta
+): Consulta[] {
+  return consultas.filter(consulta => consulta.status === status);
+}
+
+function listarConsultasFuturas(
+  consultas: Consulta[]
+): Consulta[] {
+  const now = new Date();
+  return consultas.filter(consulta => consulta.data > now);
+}
+
+const consultas: Consulta[] = [
+  criarConsulta(1, medico1, paciente1, new Date(), 350),
+  { ...criarConsulta(2, medico1, paciente1, new Date(Date.now() + 86400000), 400), status: "realizada" },
+  { ...criarConsulta(3, medico1, paciente1, new Date(Date.now() + 172800000), 500), status: "cancelada" }
+];
+
+function calcularFaturamento(
+  consultas: Consulta[]
+): number {
+  return consultas
+    .filter(consulta => consulta.status === "realizada")
+    .reduce((total, consulta) => total + consulta.valor, 0);
+}
+
 const consulta1 = criarConsulta(
   1,
   medico1,
