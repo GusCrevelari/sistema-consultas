@@ -71,3 +71,14 @@ Valor: ${valorFormatado}
 Status: ${consulta.status}
 `;
 }
+
+const consulta1 = criarConsulta(
+  1,
+  medico1,
+  paciente1,
+  new Date(),
+  350
+);
+const consultaConfirmada = confirmarConsulta(consulta1);
+console.log("=== CONSULTA CONFIRMADA ===");
+console.log(exibirConsulta(consultaConfirmada));
